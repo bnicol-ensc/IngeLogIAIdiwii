@@ -17,21 +17,8 @@ def hello_world(sentence):
     label = scores.argmax()
     textcat.labels[label]
 
-    print('poule up')
     return textcat.labels[label]
     
-
-# //
-
-# sentence="manger chinois"
-# docs = nlp.tokenizer(sentence)
-# scores, _ = textcat.predict([docs])
-# label = scores.argmax()
-# textcat.labels[label]
-
-# print(textcat.labels[label])
-
-# //
 
 if __name__ == "__main__":
     nlp = spacy.load("./models/model1")
