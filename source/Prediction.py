@@ -17,9 +17,8 @@ def makePrediction(sentence):
 
 # Make the prediction for all the sentences in input
 def makeAllPredictions(data):
-    results = [makePrediction(x) for x in data]
+    return [makePrediction(x) for x in data]
 
-    # Classes results by max
-    resultsMax = [max(x, key=x.get) for x in results]
-
-    return resultsMax
+# Classes results by max
+def maxPredictions(data):
+    return [max(x, key=x.get) for x in data]
