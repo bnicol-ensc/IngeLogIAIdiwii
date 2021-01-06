@@ -24,7 +24,6 @@ def compute_predictions():
     with open('../data/processed/testing_set.json',encoding="utf8") as f:
         testingData = json.load(f)
     # Creating a dataframe with the training data
-    d_testingData = pd.DataFrame(testingData)
     y_true = np.array([expected['intent'] for expected in testingData])
     y_pred = np.array([predict(expected['sentence'])[1] for expected in testingData])
     y_score = np.array([predict(expected['sentence'])[0][0] for expected in testingData])
@@ -35,7 +34,6 @@ def display_sentence_example():
     with open('../data/processed/testing_set.json',encoding="utf8") as f:
         testingData = json.load(f)
     # Creating a dataframe with the training data
-    d_testingData = pd.DataFrame(testingData)
     y_true, y_pred,y_score = compute_predictions()
     print(testingData[0], predict(testingData[0]["sentence"]))
     print(y_true[1], y_pred[1], y_score[1])
@@ -71,7 +69,7 @@ def compute_roc_curve():
     encoder = OneHotEncoder(sparse=False)
     y_true, y_pred,y_score = compute_predictions()
     y_enc_true = np.array(encoder.fit_transform(y_true.reshape(-1,1)))
-    y_enc_pred = np.array(encoder.transform(y_pred.reshape(-1,1)))
+    # y_enc_pred = np.array(encoder.transform(y_pred.reshape(-1,1)))
 
     fpr = dict()
     tpr = dict()
@@ -84,6 +82,7 @@ def compute_roc_curve():
     fpr["micro"], tpr["micro"], _ = roc_curve(y_enc_true.ravel(), y_score.ravel())
     roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
     return fpr,tpr,roc_auc
+
 
 def plot_roc():
     fpr,tpr,roc_auc = compute_roc_curve()
