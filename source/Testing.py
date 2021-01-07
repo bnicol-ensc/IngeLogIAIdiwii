@@ -126,5 +126,5 @@ def plot_roc():
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('Some extension of Receiver operating characteristic to multi-class')
-    plt.legend(loc="lower right")
+    plt.legend(bbox_to_anchor=(1.04,0), loc="lower left", borderaxespad=0)
     plt.show()

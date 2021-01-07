@@ -82,6 +82,7 @@ def plotGlobalConfusionMatrix(label, predict, irrelevant=True):
 
 # Compute ROC curve and ROC area for each class
 def plotROC(results, testIntent, resultsMax):
+    classes_name = list(results[0].keys())
     y_score = np.array([list(x.values()) for x in results])
     y_true = np.array(testIntent)
     y_pred = np.array(resultsMax)
@@ -134,13 +135,13 @@ def plotROC(results, testIntent, resultsMax):
     colors = cycle(['aqua', 'darkorange', 'cornflowerblue'])
     for i, color in zip(range(n_classes), colors):
         plt.plot(fpr[i], tpr[i], color=color, lw=lw,
-                label='ROC curve of class {0} (area = {1:0.2f})'.format(i, rocauc[i]))
+                label='ROC curve of class {0} (area = {1:0.2f})'.format(classes_name[i], rocauc[i]))
 
     plt.plot([0, 1], [0, 1], 'k--', lw=lw)
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
-    plt.title('Some extension of Receiver operating characteristic to multi-class')
-    plt.legend(loc="lower right")
+    plt.title('ROC-AUC curves')
+    plt.legend(bbox_to_anchor=(1.04,0), loc="lower left", borderaxespad=0)
     plt.show()
