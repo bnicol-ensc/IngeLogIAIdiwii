@@ -1,28 +1,36 @@
 # Projet d'ingénierie Logicielle pour l'IA
-## Mené à contribution égales par G. Grosse, M. Mahaut, B. Nicol
+### Mené à contribution égales par G. Grosse, M. Mahaut, B. Nicol
 
-### Problématique
+## Problématique
 Mettre à disposition sur DockerHub un service de classification d'intention (NLP) dans une image docker.
 
-### Contexte
-Projet : Ingénierie Logicielle
+## Contexte
+Projet : Ingénierie Logicielle pour le Machine learning
 Spécialité de filière : Intelligence Artificielle
 Ecoles d'ingénieurs associées : ENSC et ENSEIRB
 Durée : 2 mois
 
-### Sujet :
-#### Exercice 1 :
-Produire toutes les visualisations nécessaires sous la forme d'un notebook Python. Le code livré doit être versionné (git), testé unitairement, et facilement exécutable par un tiers.
-Identifier les indicateurs à produire afin d'évaluer les performances d'un modèle.
+## Premiers pas
+Utiliser pip pour installer les requirements : `pip install -r requirements.txt`
+Démarrer un serveur jupyter : `jupyter-notebook` ou `jupyer-lab`
+Pour suivre l'évolution du projet, lire les différents notebooks et les analyses qu'ils comprennent
+Pour tester le service, voir `api`.
 
-#### Exercice 2 :
-A partir de la consigne et des visualisations réalisées, déterminer un threshold/plage de valeur optimale pour le modèle actuel.
+## Contenu du projet
+### api
+Contient le serveur flask, le modèle et le Dockerfile.  
+Le conteneur docker a été mis en ligne sur DockerHub (https://hub.docker.com/r/bnicolensc/intent_detection) et est récupérable au moyen de la commande `docker pull bnicolensc/intent_detection`
+Pour lancer le conteneur : `docker run -d -p 5000:5000 bnicolensc/intent_detection`
+Ensuite aller sur l'URL : http://0.0.0.0:5000/api/*Phrase_à_classifier*, en remplaçant *Phrase_à_classifier* par une phrase au choix.
 
-#### Exercice 3 :
-Réaliser un programme utilisant SpaCy permettant l’entraînement d'un modèle.
-Proposer une comparaison entre le modèle obtenu et celui fourni.
+### data
+Contient les données traitées et non traitées utilisées pour l'entraînement et les tests de modèles.
 
-#### Exercice 4 :
-Exposer le modèle avec le même contrat d'échange que dans l'image Docker fournie à travers une API REST.
-Réaliser un test de montée en charge avec l'outil de votre choix. Discuter des limitations et améliorations possible sur/pour votre couche de serving .
-Identifier les différents levier pour améliorer les performances de votre service.
+### notebooks
+Contient les programmes d'entraînement, de test et de comparaison des modèles (original VS généré).
+
+### source
+Fonctions outils nécessaires à l'exécution des notebooks.
+
+### test
+Tests unitaires des fonctions des fichiers `source`.
