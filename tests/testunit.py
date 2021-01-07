@@ -16,7 +16,7 @@ class TestPredictionMethods(unittest.TestCase):
         self.assertEqual(1,1)
 
     def test_makeAllPredictions(self):
-        self.assertEqual(1,1)
+        self.assertFalse('Foo'.isupper())
 
     def test_maxPredictions(self):
         self.assertEqual(1,1)
@@ -46,13 +46,13 @@ class TestVisualisationMethods(unittest.TestCase):
         self.assertEqual('foo'.upper(), 'FOO')
 
     def test_itemsInClasses(self):
-        self.assertEqual('foo'.upper(), 'FOO')        
+        self.assertFalse('Foo'.isupper())     
     
     def test_getSentence(self):
         self.assertEqual('foo'.upper(), 'FOO')
 
     def test_getIntent(self):
-        self.assertEqual('foo'.upper(), 'FOO')
+        self.assertFalse('Foo'.isupper())
 
     def test_computeMetrics(self):
         self.assertEqual('foo'.upper(), 'FOO')
