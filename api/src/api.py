@@ -22,4 +22,4 @@ if __name__ == "__main__":
     nlp = spacy.load("./models/model1")
     textcat = nlp.get_pipe('textcat')
 
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
