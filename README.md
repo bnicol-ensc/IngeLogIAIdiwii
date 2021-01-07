@@ -21,7 +21,7 @@ Pour tester le service, voir `api`.
 Contient le serveur flask, le modèle et le Dockerfile.  
 Le conteneur docker a été mis en ligne sur DockerHub (https://hub.docker.com/r/bnicolensc/intent_detection) et est récupérable au moyen de la commande `docker pull bnicolensc/intent_detection`  
 Pour lancer le conteneur : `docker run -d -p 5000:5000 bnicolensc/intent_detection`  
-Ensuite aller sur l'URL : http://0.0.0.0:5000/api/*Phrase_à_classifier*, en remplaçant *Phrase_à_classifier* par une phrase au choix.
+Ensuite aller sur l'URL : http://0.0.0.0:5000/api/Phrase_à_classifier, en remplaçant *Phrase_à_classifier* par une phrase au choix.
 
 ### data
 Contient les données traitées et non traitées utilisées pour l'entraînement et les tests de modèles.
