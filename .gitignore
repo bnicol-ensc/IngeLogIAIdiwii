@@ -1,3 +1,4 @@
 notebooks/.ipynb_checkpoints/*
 __pycache__/*
 source/__pycache__/*
+source/.ipynb_checkpoints/*
