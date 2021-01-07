@@ -39,7 +39,6 @@ def display_sentence_example():
         testingData = json.load(f)
     # Creating a dataframe with the training data
     y_true, y_pred,y_score = compute_predictions()
-    print(testingData[0], predict(testingData[0]["sentence"]))
     print(y_true[1], y_pred[1], y_score[1])
 
 def display_recall():
