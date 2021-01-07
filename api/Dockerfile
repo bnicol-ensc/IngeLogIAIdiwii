@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 COPY src/ .
 
 # copy the model
-COPY models/ models/
+COPY model/ model/
 
 # command to run on container start
 CMD [ "python", "./api.py" ] 
