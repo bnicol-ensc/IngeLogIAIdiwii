@@ -4,15 +4,21 @@ d = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(d)
 
 import unittest
-from source.Prediction import *
+from source.Prediction import makePrediction, makeAllPredictions? maxPredictions
 from source.Testing import predict, compute_predictions, compute_roc_curve
-from source.Train import *
-from source.Visualisation import *
+from source.Train import import_data
+from source.Visualisation import totalNumberOfItems, itemsInClasses, getSentence, getIntent, computeMetrics
 
 
 class TestPredictionMethods(unittest.TestCase):
 
-    def test_function(self):
+    def test_makePrediction(self):
+        self.assertEqual(1,1)
+
+    def test_makeAllPredictions(self):
+        self.assertEqual(1,1)
+
+    def test_maxPredictions(self):
         self.assertEqual(1,1)
 
 
@@ -31,19 +37,25 @@ class TestTestingMethods(unittest.TestCase):
 class TestTrainMethods(unittest.TestCase):
     
     def test_import_data(self):
-        import_data
         self.assertEqual('foo'.upper(), 'FOO')
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
 
 
 class TestVisualisationMethods(unittest.TestCase):
     
-    def test_function(self):
+    def test_totalNumberOfItems(self):
         self.assertEqual('foo'.upper(), 'FOO')
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
 
+    def test_itemsInClasses(self):
+        self.assertEqual('foo'.upper(), 'FOO')        
+    
+    def test_getSentence(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+
+    def test_getIntent(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+
+    def test_computeMetrics(self):
+        self.assertEqual('foo'.upper(), 'FOO')
 
 if __name__ == '__main__':
     unittest.main()
