@@ -145,7 +145,7 @@ def plotROC(results, testIntent, resultsMax):
     plt.title('ROC-AUC curves')
     plt.legend(bbox_to_anchor=(1.04,0), loc="lower left", borderaxespad=0)
     plt.show()
-    
+
 def threshold(results, testIntent):
     y_score = np.array([list(x.values()) for x in results])
     y_pred = np.array([list(x.key()) for x in results])
