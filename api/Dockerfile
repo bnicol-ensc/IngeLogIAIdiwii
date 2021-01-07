@@ -16,5 +16,5 @@ COPY src/ .
 # copy the model
 COPY model/ model/
 
-# command to run on container start
+# starting server on container start
 CMD [ "python", "./api.py" ] 
