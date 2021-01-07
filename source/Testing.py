@@ -9,7 +9,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-nlp = spacy.load("../models/model1")
+import sys
+import os 
+d = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+nlp = spacy.load(f"{d}/models/model1")
 textcat = nlp.get_pipe('textcat')
 
 def predict(sentence = "What does life even mean ?"):
@@ -21,7 +25,7 @@ def predict(sentence = "What does life even mean ?"):
 
 def compute_predictions():
     # Reading training data
-    with open('../data/processed/testing_set.json',encoding="utf8") as f:
+    with open(f'{d}/data/processed/testing_set.json',encoding="utf8") as f:
         testingData = json.load(f)
     # Creating a dataframe with the training data
     y_true = np.array([expected['intent'] for expected in testingData])
@@ -31,7 +35,7 @@ def compute_predictions():
 
 def display_sentence_example():
     # Reading training data
-    with open('../data/processed/testing_set.json',encoding="utf8") as f:
+    with open(f'{d}/data/processed/testing_set.json',encoding="utf8") as f:
         testingData = json.load(f)
     # Creating a dataframe with the training data
     y_true, y_pred,y_score = compute_predictions()
@@ -67,7 +71,7 @@ def display_fbeta_score():
 def compute_roc_curve():
     # Compute ROC curve and ROC area for each class    
     encoder = OneHotEncoder(sparse=False)
-    y_true, y_pred,y_score = compute_predictions()
+    y_true,_,y_score = compute_predictions()
     y_enc_true = np.array(encoder.fit_transform(y_true.reshape(-1,1)))
     # y_enc_pred = np.array(encoder.transform(y_pred.reshape(-1,1)))
 
