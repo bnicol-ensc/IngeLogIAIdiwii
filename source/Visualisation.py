@@ -148,16 +148,17 @@ def plotROC(results, testIntent, resultsMax):
 
 def threshold(results, testIntent):
     y_score = np.array([list(x.values()) for x in results])
-    y_pred = np.array([list(x.key()) for x in results])
+    y_pred = np.array([max(x, key=x.get) for x in results])
     y_true = np.array(testIntent)
-    
+        
     true = []
     false = []
-    for i,score in enumerate(y_score):
+
+    for i, score in enumerate(y_score):
         if y_true[i] == y_pred[i]:
-            true.append(np.argmax(score))
+            true.append(np.max(score))
         else:
-            false.append(np.argmax(score))
-            
+            false.append(np.max(score))
+                
     print("mean activation score when classification correct : ",np.mean(np.array(true)))
     print("mean activation score when classification wrong : ",np.mean(np.array(false)))
