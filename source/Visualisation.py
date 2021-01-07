@@ -145,3 +145,19 @@ def plotROC(results, testIntent, resultsMax):
     plt.title('ROC-AUC curves')
     plt.legend(bbox_to_anchor=(1.04,0), loc="lower left", borderaxespad=0)
     plt.show()
+    
+def threshold(results, testIntent):
+    y_score = np.array([list(x.values()) for x in results])
+    y_pred = np.array([list(x.key()) for x in results])
+    y_true = np.array(testIntent)
+    
+    true = []
+    false = []
+    for i,score in enumerate(y_score):
+        if y_true[i] == y_pred[i]:
+            true.append(np.argmax(score))
+        else:
+            false.append(np.argmax(score))
+            
+    print("mean activation score when classification correct : ",np.mean(np.array(true)))
+    print("mean activation score when classification wrong : ",np.mean(np.array(false)))
