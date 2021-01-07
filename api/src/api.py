@@ -19,7 +19,7 @@ def hello_world(sentence):
     
 
 if __name__ == "__main__":
-    nlp = spacy.load("./models/model1")
+    nlp = spacy.load("./model/")
     textcat = nlp.get_pipe('textcat')
 
     app.run(host="0.0.0.0")
